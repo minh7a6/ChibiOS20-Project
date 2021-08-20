@@ -202,7 +202,7 @@
 #endif
 
 #if !defined(HAL_USE_COMMUNITY) || defined(__DOXYGEN__)
-#define HAL_USE_COMMUNITY                   TRUE
+#define HAL_USE_COMMUNITY                   FALSE
 #endif
 
 
