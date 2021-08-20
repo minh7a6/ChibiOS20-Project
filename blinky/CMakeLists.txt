@@ -79,7 +79,7 @@ ${CHIBIOS}/os/hal/lib/streams
 
 include(cmake/ChibiOS20RT.cmake)
 include(cmake/ChibiOS20HAL.cmake)
-include(cmake/ChibiOS20ContribF3.cmake)
+# include(cmake/ChibiOS20ContribF3.cmake)
 include(cmake/stm32f3xx.cmake)
 include(cmake/link.cmake)
 
