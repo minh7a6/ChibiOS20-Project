@@ -1,8 +1,15 @@
+if(${FPU} MATCHES no)
+set(IS_FPU FALSE)
+set(FPU_CFG soft)
+else()
+set(IS_FPU TRUE)
+set(FPU_CFG ${FPU})
+endif()
 set(MCU 
 -mcpu=cortex-m4
 -mthumb
 -mfpu=fpv4-sp-d16
--mfloat-abi=${FPU}
+-mfloat-abi=${FPU_CFG}
 )
 
 target_include_directories(${EXECUTABLE} PRIVATE
@@ -56,12 +63,6 @@ ${CHIBIOS}/os/common/startup/ARMCMx/compilers/GCC/crt0_v7m.S
 ${CHIBIOS}/os/common/startup/ARMCMx/compilers/GCC/vectors.S
 ${CHIBIOS}/os/common/startup/ARMCMx/compilers/GCC/crt1.c
 )
-
-if(${FPU} MATCHES no)
-set(IS_FPU FALSE)
-else()
-set(IS_FPU TRUE)
-endif()
 
 target_compile_definitions(${EXECUTABLE} PRIVATE
 CORTEX_USE_FPU=${IS_FPU}

@@ -20,18 +20,6 @@
 /*
  * Green LED blinker thread, times are in milliseconds.
  */
-static THD_WORKING_AREA(waThread1, 128);
-static THD_FUNCTION(Thread1, arg) {
-
-  (void)arg;
-  chRegSetThreadName("blinker");
-
-  while (true) {
-    chprintf((BaseSequentialStream*)&SD2, "Hello World!\r\n");
-    chThdSleepMilliseconds(500);
-  }
-}
-
 /*
  * Application entry point.
  */
@@ -51,11 +39,10 @@ int main(void) {
    * Activates the serial driver 2 using the driver default configuration.
    */
   sdStart(&SD2, NULL);
-
+  eflStart(&EFLD1, NULL);
   /*
    * Creates the blinker thread.
    */
-  chThdCreateStatic(waThread1, sizeof(waThread1), NORMALPRIO, Thread1, NULL);
 
   /*
    * Normal main() thread activity, in this demo it does nothing except
@@ -63,6 +50,6 @@ int main(void) {
    */
   while (true) {
     palToggleLine(LINE_LED);
-    chThdSleepMilliseconds(100);
+    chThdSleepMilliseconds(50);
   }
 }

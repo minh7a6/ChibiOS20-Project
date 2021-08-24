@@ -20,7 +20,7 @@ set(CPPOPTS -fno-rtti)
 set(USE_LTO TRUE)
 
 # Enables the use of FPU (no, softfp, hard).
-set(FPU hard)
+set(FPU softfp)
 
 # Stack size to be allocated to the Cortex-M process stack. This stack is
 # the stack used by the main() thread.
@@ -58,10 +58,14 @@ set(PORT_FILE cmake/ChibiOS20PORTv7.cmake)
 FILE(GLOB APP_SRC
 App/Src/*.c
 App/Src/*.cpp
-boardCfg/*.c)
+boardCfg/*.c
+flashDriver/*.c
+)
 
 FILE(GLOB STREAMS_SRC
-${CHIBIOS}/os/hal/lib/streams/*.c)
+${CHIBIOS}/os/hal/lib/streams/*.c
+${CHIBIOS}/os/hal/lib/complex/mfs/*.c
+)
 
 add_executable(${EXECUTABLE} 
 ${APP_SRC}
@@ -73,6 +77,8 @@ App/cfg
 boardCfg
 App/Inc
 ${CHIBIOS}/os/hal/lib/streams
+${CHIBIOS}/os/hal/lib/complex/mfs
+flashDriver
 )
 
 #################################################################################################################

@@ -72,7 +72,7 @@
  * @brief   Enables the EFlash subsystem.
  */
 #if !defined(HAL_USE_EFL) || defined(__DOXYGEN__)
-#define HAL_USE_EFL                         FALSE
+#define HAL_USE_EFL                         TRUE
 #endif
 
 /**
@@ -204,7 +204,6 @@
 #if !defined(HAL_USE_COMMUNITY) || defined(__DOXYGEN__)
 #define HAL_USE_COMMUNITY                   FALSE
 #endif
-
 
 #if !defined(HAL_USE_QEI) || defined(__DOXYGEN__)
 #define HAL_USE_QEI                         FALSE
